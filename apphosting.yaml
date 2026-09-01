@@ -8,8 +8,24 @@ runConfig:
   # memoryMiB: 512
 
 # Environment variables and secrets.
-# env:
-  # Configure environment variables.
+env:
+  # Canonical site origin used for metadata, canonical links, robots, and sitemap.
+  # NEXT_PUBLIC_ vars are inlined at build time, so BUILD availability is required.
+  # Update the value when a custom domain is connected.
+  - variable: NEXT_PUBLIC_SITE_URL
+    value: https://aquariussolutions.com.do
+    availability:
+      - BUILD
+      - RUNTIME
+
+  # Google Search Console site-verification token (meta-tag method).
+  # - variable: NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+  #   value: mq8caGMhWnHgTrSMUowLbtOiKZjYMIVDqDl2SEtbJho
+  #   availability:
+  #     - BUILD
+  #     - RUNTIME
+
+  # Other environment variables.
   # See https://firebase.google.com/docs/app-hosting/configure#user-defined-environment
   # - variable: MESSAGE
   #   value: Hello world!
