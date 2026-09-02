@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -10,6 +11,13 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+// Astrological display font. The Aquarius sign is mapped to the letter "A".
+const cosmobio = localFont({
+  src: "./fonts/Cosmobiofont2.ttf",
+  variable: "--font-cosmobio",
+  display: "swap",
 });
 
 // Canonical origin. Set NEXT_PUBLIC_SITE_URL once a real domain is connected;
@@ -86,7 +94,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${cosmobio.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <script

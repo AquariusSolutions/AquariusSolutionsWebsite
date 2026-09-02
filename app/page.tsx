@@ -1,6 +1,8 @@
+import { AquariusGlyph } from "./components/aquarius-glyph";
+
 const STARS = Array.from({ length: 60 }, (_, i) => {
   // deterministic pseudo-random so server and client render match
-  const r = (n: number) => ((Math.sin(i * 999 + n) + 1) / 2);
+  const r = (n: number) => (Math.sin(i * 999 + n) + 1) / 2;
   return {
     top: `${(r(1) * 100).toFixed(2)}%`,
     left: `${(r(2) * 100).toFixed(2)}%`,
@@ -71,14 +73,23 @@ export default function Home() {
       {/* ---- Nav ---- */}
       <header className="sticky top-0 z-50 backdrop-blur-md">
         <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-5">
-          <a href="#top" className="flex items-center gap-2 text-lg font-semibold tracking-tight">
-            <span className="text-2xl text-aqua drop-shadow-[0_0_12px_rgba(34,211,238,0.7)]">♒</span>
+          <a
+            href="#top"
+            className="flex items-center gap-2 text-lg font-semibold tracking-tight"
+          >
+            <AquariusGlyph className="text-2xl text-aqua drop-shadow-[0_0_12px_rgba(34,211,238,0.7)]" />
             Aquarius&nbsp;Solutions
           </a>
           <div className="hidden items-center gap-8 text-sm text-white/70 sm:flex">
-            <a href="#services" className="transition-colors hover:text-white">Services</a>
-            <a href="#work" className="transition-colors hover:text-white">Work</a>
-            <a href="#contact" className="transition-colors hover:text-white">Contact</a>
+            <a href="#services" className="transition-colors hover:text-white">
+              Services
+            </a>
+            <a href="#work" className="transition-colors hover:text-white">
+              Work
+            </a>
+            <a href="#contact" className="transition-colors hover:text-white">
+              Contact
+            </a>
           </div>
           <a
             href="#contact"
@@ -90,7 +101,10 @@ export default function Home() {
       </header>
 
       {/* ---- Hero ---- */}
-      <main id="top" className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col">
+      <main
+        id="top"
+        className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col"
+      >
         <section className="grid items-center gap-12 px-6 py-24 md:grid-cols-[1.1fr_0.9fr] md:py-32">
           <div className="animate-rise">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/70">
@@ -104,9 +118,9 @@ export default function Home() {
               </span>
             </h1>
             <p className="mt-6 max-w-md text-lg leading-8 text-white/60">
-              Aquarius Solutions, S.R.L. builds custom software, cloud solutions,
-              and system integrations from Santo Domingo — engineered to scale and
-              made to last.
+              Aquarius Solutions, S.R.L. builds custom software, cloud
+              solutions, and system integrations from Santo Domingo — engineered
+              to scale and made to last.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
@@ -157,8 +171,17 @@ export default function Home() {
                 opacity="0.8"
               />
               {[
-                [30, 70], [60, 55], [90, 70], [120, 55], [150, 72], [172, 58],
-                [40, 120], [70, 105], [100, 120], [130, 105], [160, 122],
+                [30, 70],
+                [60, 55],
+                [90, 70],
+                [120, 55],
+                [150, 72],
+                [172, 58],
+                [40, 120],
+                [70, 105],
+                [100, 120],
+                [130, 105],
+                [160, 122],
               ].map(([cx, cy], i) => (
                 <circle
                   key={i}
@@ -171,17 +194,17 @@ export default function Home() {
                   style={{ animationDelay: `${i * 0.3}s` }}
                 />
               ))}
-              {/* big Aquarius glyph */}
+              {/* big Aquarius glyph — "A" in Cosmobiofont2 maps to the sign */}
               <text
                 x="100"
                 y="180"
                 textAnchor="middle"
-                fontSize="34"
+                fontSize="40"
                 fill="url(#line)"
                 filter="url(#glow)"
-                fontWeight="bold"
+                style={{ fontFamily: "var(--font-cosmobio)" }}
               >
-                ♒
+                A
               </text>
             </svg>
           </div>
@@ -233,10 +256,10 @@ export default function Home() {
             Tell us where you want to go. We&apos;ll chart the course.
           </p>
           <a
-            href="mailto:aquarius.solutions.rd@gmail.com"
+            href="mailto:info@aquariussolutions.com.do"
             className="mt-8 inline-flex h-13 items-center justify-center rounded-full bg-gradient-to-r from-aqua to-indigo px-8 py-3.5 font-medium text-[#05060f] transition-transform hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(34,211,238,0.5)]"
           >
-            aquarius.solutions.rd@gmail.com
+            info@aquariussolutions.com.do
           </a>
           <div className="mt-8 flex flex-col items-center gap-1 text-sm text-white/40">
             <span>Santo Domingo, D. N.</span>
@@ -248,13 +271,21 @@ export default function Home() {
       {/* ---- Wave divider + footer ---- */}
       <div aria-hidden className="relative h-24 w-full overflow-hidden">
         <div className="absolute bottom-0 left-0 flex w-[200%] animate-wave">
-          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="h-24 w-1/2">
+          <svg
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+            className="h-24 w-1/2"
+          >
             <path
               d="M0,60 C150,120 350,0 600,60 C850,120 1050,0 1200,60 L1200,120 L0,120 Z"
               fill="rgba(34,211,238,0.12)"
             />
           </svg>
-          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="h-24 w-1/2">
+          <svg
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+            className="h-24 w-1/2"
+          >
             <path
               d="M0,60 C150,120 350,0 600,60 C850,120 1050,0 1200,60 L1200,120 L0,120 Z"
               fill="rgba(34,211,238,0.12)"
@@ -265,9 +296,20 @@ export default function Home() {
       <footer className="border-t border-white/10 px-6 py-8">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-3 text-sm text-white/40 sm:flex-row">
           <span className="flex items-center gap-2">
-            <span className="text-aqua">♒</span> Aquarius Solutions, S.R.L.
+            <AquariusGlyph className="text-aqua" /> Aquarius Solutions, S.R.L.
           </span>
-          <span>© {new Date().getFullYear()} — Ideas that flow.</span>
+          <div className="flex items-center gap-4">
+            <a href="/privacy" className="transition-colors hover:text-white">
+              Privacy
+            </a>
+            <a
+              href="/delete-account"
+              className="transition-colors hover:text-white"
+            >
+              Delete account
+            </a>
+            <span>© {new Date().getFullYear()} — Ideas that flow.</span>
+          </div>
         </div>
       </footer>
     </div>
