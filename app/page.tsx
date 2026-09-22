@@ -35,6 +35,16 @@ const SERVICES = [
   },
 ];
 
+const APPS = [
+  {
+    name: "Chesster",
+    icon: "/apps/chesster.png",
+    tag: "Mobile · Android",
+    href: "https://play.google.com/store/apps/details?id=com.aquariussolutions.chesster",
+    body: "Sharpen your chess with puzzles, progress tracking, and your solving history in one place.",
+  },
+];
+
 const STATS = [
   { value: "2025", label: "Founded" },
   { value: "Santo Domingo", label: "Dominican Republic" },
@@ -83,6 +93,9 @@ export default function Home() {
           <div className="hidden items-center gap-8 text-sm text-white/70 sm:flex">
             <a href="#services" className="transition-colors hover:text-white">
               Services
+            </a>
+            <a href="#apps" className="transition-colors hover:text-white">
+              Apps
             </a>
             <a href="#work" className="transition-colors hover:text-white">
               Work
@@ -233,12 +246,52 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ---- Apps ---- */}
+        <section id="apps" className="px-6 py-20">
+          <h2 className="text-center text-3xl font-semibold tracking-tight sm:text-4xl">
+            Our apps
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-center text-white/50">
+            Products we build and ship ourselves.
+          </p>
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {APPS.map((a) => (
+              <a
+                key={a.name}
+                href={a.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${a.name} on Google Play`}
+                className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-aqua/40 hover:bg-white/[0.06] hover:shadow-[0_0_40px_-10px_rgba(34,211,238,0.5)]"
+              >
+                <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-aqua/0 blur-2xl transition-all group-hover:bg-aqua/20" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={a.icon}
+                  alt={`${a.name} app icon`}
+                  width={64}
+                  height={64}
+                  className="h-16 w-16 rounded-2xl border border-white/10"
+                />
+                <h3 className="mt-4 text-lg font-semibold">{a.name}</h3>
+                <span className="mt-1 inline-block text-xs font-medium text-aqua">
+                  {a.tag}
+                </span>
+                <p className="mt-2 text-sm leading-6 text-white/55">{a.body}</p>
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-aqua">
+                  Get it on Google Play <span aria-hidden>→</span>
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
+
         {/* ---- Stats ---- */}
         <section id="work" className="px-6 py-16">
           <div className="grid grid-cols-2 gap-6 rounded-3xl border border-white/10 bg-white/[0.03] p-10 backdrop-blur-sm sm:grid-cols-4">
             {STATS.map((s) => (
-              <div key={s.label} className="text-center">
-                <div className="bg-gradient-to-r from-aqua to-violet bg-clip-text text-4xl font-bold text-transparent">
+              <div key={s.label} className="flex h-full flex-col text-center">
+                <div className="flex flex-1 items-center justify-center break-words text-balance bg-gradient-to-r from-aqua to-violet bg-clip-text text-2xl font-bold leading-tight text-transparent sm:text-4xl">
                   {s.value}
                 </div>
                 <div className="mt-1 text-sm text-white/50">{s.label}</div>

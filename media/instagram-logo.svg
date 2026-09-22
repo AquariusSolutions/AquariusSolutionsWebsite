@@ -1,0 +1,54 @@
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="38%" r="75%">
+      <stop offset="0%" stop-color="#0b1030"/>
+      <stop offset="60%" stop-color="#070a1c"/>
+      <stop offset="100%" stop-color="#05060f"/>
+    </radialGradient>
+    <linearGradient id="wave" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="55%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <radialGradient id="aurora1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="aurora2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+
+  <!-- full square background (safe if IG shows square) -->
+  <rect width="1080" height="1080" fill="#05060f"/>
+  <!-- circular brand disc (IG crops to circle) -->
+  <circle cx="540" cy="540" r="540" fill="url(#bg)"/>
+
+  <!-- aurora glows -->
+  <circle cx="330" cy="360" r="300" fill="url(#aurora1)"/>
+  <circle cx="760" cy="700" r="320" fill="url(#aurora2)"/>
+
+  <!-- starfield -->
+  <g fill="#ffffff">
+    <circle cx="250" cy="250" r="3" opacity="0.9"/>
+    <circle cx="820" cy="300" r="2.5" opacity="0.7"/>
+    <circle cx="700" cy="220" r="2" opacity="0.6"/>
+    <circle cx="860" cy="560" r="3" opacity="0.8"/>
+    <circle cx="300" cy="760" r="2.5" opacity="0.7"/>
+    <circle cx="540" cy="180" r="2" opacity="0.6"/>
+    <circle cx="210" cy="520" r="2" opacity="0.6"/>
+    <circle cx="760" cy="860" r="2.5" opacity="0.7"/>
+  </g>
+
+  <!-- Aquarius waves glyph, centered in circle safe zone -->
+  <g fill="none" stroke="url(#wave)" stroke-width="46" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M320 470 q55 -70 110 0 q55 70 110 0 q55 -70 110 0 q55 70 110 0" filter="url(#soft)" opacity="0.55"/>
+    <path d="M320 470 q55 -70 110 0 q55 70 110 0 q55 -70 110 0 q55 70 110 0"/>
+    <path d="M320 610 q55 -70 110 0 q55 70 110 0 q55 -70 110 0 q55 70 110 0" filter="url(#soft)" opacity="0.55"/>
+    <path d="M320 610 q55 -70 110 0 q55 70 110 0 q55 -70 110 0 q55 70 110 0"/>
+  </g>
+</svg>
