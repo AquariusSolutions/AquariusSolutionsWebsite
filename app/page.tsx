@@ -35,13 +35,32 @@ const SERVICES = [
   },
 ];
 
-const APPS = [
+type App = {
+  name: string;
+  icon: string;
+  tag: string;
+  body: string;
+  /** Web version, served from a subdomain. */
+  web?: string;
+  /** Google Play listing, once the app is published there. */
+  play?: string;
+};
+
+const APPS: App[] = [
   {
     name: "Chesster",
     icon: "/apps/chesster.png",
-    tag: "Mobile · Android",
-    href: "https://play.google.com/store/apps/details?id=com.aquariussolutions.chesster",
+    tag: "Web · Android",
+    web: "https://chesster.aquariussolutions.com.do",
+    play: "https://play.google.com/store/apps/details?id=com.aquariussolutions.chesster",
     body: "Sharpen your chess with puzzles, progress tracking, and your solving history in one place.",
+  },
+  {
+    name: "Mercury - ToolBox",
+    icon: "/apps/mercury-toolbox.png",
+    tag: "Web · Android soon",
+    web: "https://toolbox.aquariussolutions.com.do",
+    body: "28 everyday tools in one app: level, compass, ruler, metronome, tuner, sound meter, converter and more.",
   },
 ];
 
@@ -256,13 +275,9 @@ export default function Home() {
           </p>
           <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {APPS.map((a) => (
-              <a
+              <div
                 key={a.name}
-                href={a.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${a.name} on Google Play`}
-                className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-aqua/40 hover:bg-white/[0.06] hover:shadow-[0_0_40px_-10px_rgba(34,211,238,0.5)]"
+                className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-aqua/40 hover:bg-white/[0.06] hover:shadow-[0_0_40px_-10px_rgba(34,211,238,0.5)]"
               >
                 <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-aqua/0 blur-2xl transition-all group-hover:bg-aqua/20" />
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -277,11 +292,34 @@ export default function Home() {
                 <span className="mt-1 inline-block text-xs font-medium text-aqua">
                   {a.tag}
                 </span>
-                <p className="mt-2 text-sm leading-6 text-white/55">{a.body}</p>
-                <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-aqua">
-                  Get it on Google Play <span aria-hidden>→</span>
-                </span>
-              </a>
+                <p className="mt-2 flex-1 text-sm leading-6 text-white/55">
+                  {a.body}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium">
+                  {a.web ? (
+                    <a
+                      href={a.web}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Open ${a.name} on the web`}
+                      className="inline-flex items-center gap-1 text-aqua transition-colors hover:text-white"
+                    >
+                      Open on the web <span aria-hidden>→</span>
+                    </a>
+                  ) : null}
+                  {a.play ? (
+                    <a
+                      href={a.play}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${a.name} on Google Play`}
+                      className="inline-flex items-center gap-1 text-aqua transition-colors hover:text-white"
+                    >
+                      Get it on Google Play <span aria-hidden>→</span>
+                    </a>
+                  ) : null}
+                </div>
+              </div>
             ))}
           </div>
         </section>
